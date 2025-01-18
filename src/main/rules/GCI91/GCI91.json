@@ -1,5 +1,5 @@
 {
-  "title": "Use Cast instead of Select to cast",
+  "title": "Use Where before OrderBy",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
