@@ -4,7 +4,7 @@ Use Cast instead of Select to cast.
 
 == Why is this an issue ?
 
-Cast is more efficient than Select for casting operations, it's usage leads to better performance.
+Cast is more efficient than Select for casting operations, its usage leads to better performance.
 
 === When can it be ignored ?
 
