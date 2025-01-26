@@ -9,12 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- GCI90 C#: Use `Cast` instead of `Select` to cast.
-- [#370](https://github.com/green-code-initiative/creedengo-rules-specifications/pull/370) Add new JS rule GCI36 - Avoid autoplay for videos and audio content
-
 ### Changed
 
 ### Deleted
+
+## [2.2.0] - 2025-01-26
+
+### Added
+
+- GCI90 C#: Use `Cast` instead of `Select` to cast.
+- [#361](https://github.com/green-code-initiative/creedengo-rules-specifications/pull/361) correction of GCI72 Java rule example
+- [#370](https://github.com/green-code-initiative/creedengo-rules-specifications/pull/370) Add new JS rule GCI36 - Avoid autoplay for videos and audio content
 
 ## [2.1.0] - 2025-01-03
 
@@ -380,7 +385,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/2.1.0...HEAD)
+[unreleased](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/2.2.0...HEAD)
+[2.2.0](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/2.1.0...2.2.0)
 [2.1.0](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/2.0.0...2.1.0)
 [2.0.0](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/1.6.5...2.0.0)
 [1.6.5](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/1.6.4...1.6.5)
