@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [2.2.1] - 2025-01-27
+
+### Changed
+
+- Move JavaScript rule GCI36 to appropriate folder
+
 ## [2.2.0] - 2025-01-26
 
 ### Added
@@ -385,7 +391,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/2.2.0...HEAD)
+[unreleased](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/2.2.1...HEAD)
+[2.2.1](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/2.2.0...2.2.1)
 [2.2.0](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/2.1.0...2.2.0)
 [2.1.0](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/2.0.0...2.1.0)
 [2.0.0](https://github.com/green-code-initiative/creedengo-rules-specifications/compare/1.6.5...2.0.0)
