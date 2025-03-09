@@ -2,15 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.ecocode</groupId>
-    <artifactId>ecocode-parent</artifactId>
-    <version>1.5.5-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <groupId>org.green-code-initiative</groupId>
+    <artifactId>creedengo-rules-specifications</artifactId>
+    <version>${revision}</version>
 
-    <name>ecoCode Sonar Plugins Project</name>
-    <description>Provides rules to reduce the environmental footprint of your programs</description>
-    <url>https://github.com/green-code-initiative/ecocode</url>
-    <inceptionYear>2023</inceptionYear>
+    <name>creedengo Rules Specifications repository</name>
+    <description>Repository that contains the specifications of every static-analysis rules available in creedengo plugins.</description>
+    <url>https://github.com/green-code-initiative/creedengo-rules-specifications</url>
+
+    <inceptionYear>2024</inceptionYear>
     <organization>
         <name>green-code-initiative</name>
         <url>https://github.com/green-code-initiative</url>
@@ -24,24 +24,20 @@
     </licenses>
 
     <developers>
-        <!--
-            Mandatory information to be able to publish to Maven Central:
-            https://central.sonatype.org/publish/requirements/#developer-information
-        -->
         <developer>
-            <name>Gilles Grousset</name>
+            <name>Gilles GROUSSET</name>
             <email>zippy1978@users.noreply.github.com</email>
             <organization>green-code-initiative</organization>
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
         </developer>
         <developer>
-            <name>Maxime Malgorn</name>
+            <name>Maxime MALGORN</name>
             <email>utarwyn@users.noreply.github.com</email>
             <organization>green-code-initiative</organization>
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
         </developer>
         <developer>
-            <name>Geoffrey Lalloué</name>
+            <name>Geoffrey LALLOUÉ</name>
             <email>glalloue@users.noreply.github.com</email>
             <organization>green-code-initiative</organization>
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
@@ -53,47 +49,86 @@
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
         </developer>
         <developer>
-            <name>Olivier Le Goaër</name>
+            <name>Olivier LE GOAËR</name>
             <email>olegoaer@users.noreply.github.com</email>
             <organization>green-code-initiative</organization>
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
         </developer>
         <developer>
-            <name>Julien Hertout</name>
+            <name>Julien HERTOUT</name>
             <email>jhertout@users.noreply.github.com</email>
             <organization>green-code-initiative</organization>
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
         </developer>
         <developer>
-            <name>Jules Delecour</name>
+            <name>Jules DELECOUR</name>
             <email>jules-delecour-dav@users.noreply.github.com</email>
             <organization>green-code-initiative</organization>
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
         </developer>
         <developer>
-            <name>DUBOIS Maxime</name>
+            <name>Maxime DUBOIS</name>
             <email>mdubois81@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Vianney DE BELLABRE</name>
+            <email>Djoums@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Jérôme CARDON</name>
+            <email>jay-79@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Justin BERQUE</name>
+            <email>JBerque@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Johanna DUIGOU</name>
+            <email>jduigoudev@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Jean-Yves CRONIER</name>
+            <email>jycr@users.noreply.github.com</email>
             <organization>green-code-initiative</organization>
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
         </developer>
     </developers>
 
-    <modules>
-        <module>ecocode-rules-specifications</module>
-    </modules>
-
     <scm>
-        <connection>scm:git:https://github.com/green-code-initiative/ecocode</connection>
-        <developerConnection>scm:git:https://github.com/green-code-initiative/ecocode</developerConnection>
-        <url>https://github.com/green-code-initiative/ecocode</url>
+        <connection>scm:git:https://github.com/green-code-initiative/creedengo-rules-specifications</connection>
+        <developerConnection>scm:git:https://github.com/green-code-initiative/creedengo-rules-specifications</developerConnection>
+        <url>https://github.com/green-code-initiative/creedengo-rules-specifications</url>
         <tag>HEAD</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/green-code-initiative/ecocode/issues</url>
+        <url>https://github.com/green-code-initiative/creedengo-rules-specifications/issues</url>
     </issueManagement>
 
     <properties>
+        <!--
+            Default version when disabling Maven `maven-git-versioning-extension` extension
+            cf. https://github.com/qoomon/maven-git-versioning-extension#intellij&#45;&#45;-multi-modules-projects
+        -->
+        <revision>current-SNAPSHOT</revision>
+
+        <!-- Helps ensure build reproducibility (cf. https://maven.apache.org/guides/mini/guide-reproducible-builds.html) -->
+        <!--suppress UnresolvedMavenProperty -->
+        <project.build.outputTimestamp>${git.commit.timestamp.datetime}</project.build.outputTimestamp>
+
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
@@ -101,38 +136,250 @@
 
     </properties>
 
-    <!-- <build>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- TO KEEP : to fix sonar plugin version for CICD and execute sonar:sonar on github CI -->
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>5.0.0.4389</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>4.1</version>
-                <configuration>
-                    <properties>
-                        <owner>Green Code Initiative</owner>
-                        <email>https://www.ecocode.io</email>
-                    </properties>
-                    <licenseSets>
-                        <licenseSet>
-                            <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header>
-                            <includes>
-                                <include>**/*.java</include>
-                            </includes>
-                        </licenseSet>
-                    </licenseSets>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.5.0</version>
                 <executions>
                     <execution>
-                        <id>validate</id>
+                        <id>enforce-maven</id>
                         <goals>
-                            <goal>check</goal>
+                            <goal>enforce</goal>
                         </goals>
-                        <phase>validate</phase>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <!-- Do not specify version upper maven wrapper (cf. ./.mvn/wrapper/maven-wrapper.properties#line=19 -->
+                                    <version>3.8.5</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!--
+					This plugin convert ASCIIDOC rule specification in HTML format
+					ASCIIDOC format is used with custom features such as :
+					- syntax highlighting (see code blocks on ASCIIDOC rules)
+					- inclusions (see: php/EC74.asciidoc)
+					- table data generation from CSV (see: php/EC69.asciidoc)
+				-->
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>convert-to-html</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/rules</sourceDirectory>
+                            <outputDirectory>${project.build.directory}/rules-html</outputDirectory>
+                            <attributes>
+                                <source-highlighter>coderay</source-highlighter>
+                                <coderay-css>style</coderay-css>
+                            </attributes>
+                            <preserveDirectories>true</preserveDirectories>
+                            <embedAssets>true</embedAssets>
+                            <standalone>false</standalone>
+                            <relativeBaseDir>true</relativeBaseDir>
+                            <logHandler>
+                                <failIf>
+                                    <severity>ERROR</severity>
+                                </failIf>
+                            </logHandler>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!--
+					Prepare resources tree needed by language.
+					Each metadata JSON file must be in the same folder as the HTML description file for the corresponding language.
+				-->
+                <groupId>com.github.johnpoth</groupId>
+                <artifactId>jshell-maven-plugin</artifactId>
+                <version>1.4</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>jakarta.json</groupId>
+                        <artifactId>jakarta.json-api</artifactId>
+                        <version>2.1.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.glassfish</groupId>
+                        <artifactId>jakarta.json</artifactId>
+                        <version>2.0.1</version>
+                        <classifier>module</classifier>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>prepare-rules-resources</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <scripts>
+                                <script>${project.basedir}/src/main/script/PrepareResources.jsh</script>
+                            </scripts>
+                            <options>
+                                <option>-R "-DsourceDir=${project.build.directory}/rules-html"</option>
+                                <option>-R "-DtargetDir=${project.build.outputDirectory}/org/green-code-initiative/rules"</option>
+                            </options>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!--
+					This module produce one artifact by language (with corresponding classifier)
+				-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.1</version>
+                <executions>
+                    <execution>
+                        <id>assembly-java</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/main/assembly/java.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>assembly-php</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/main/assembly/php.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>assembly-python</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/main/assembly/python.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>assembly-javascript</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/main/assembly/javascript.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>assembly-swift</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/main/assembly/swift.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>assembly-xml</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/main/assembly/xml.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>assembly-csharp</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/main/assembly/csharp.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>assembly-html</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/main/assembly/html.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <appendAssemblyId>true</appendAssemblyId>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!--
+                Plugin to configure reading sonar-project.properties (via Maven Properties Plugin)
+                because SonarQube Scanner for Maven does not support reading sonar-project.properties
+                -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>sonar-project.properties</file>
+                            </files>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
-    </build> -->
+    </build>
 
     <profiles>
         <profile>
@@ -144,32 +391,41 @@
                 - https://central.sonatype.org/publish/release/#login-into-ossrh
             -->
 
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-            </distributionManagement>
             <build>
                 <plugins>
-                    <plugin><!--
-
-                        For publishing in Maven Central,
-                        see: https://central.sonatype.org/publish/publish-maven/#distribution-management-and-authentication
-
-                        -->
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.13</version>
-                        <extensions>true</extensions>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.3.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.11.2</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadoc</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                         <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                            <!-- if true : automatic publish / if false : manual publish on Nexus GUI ("staging repository" tab) -->
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <stylesheet>java</stylesheet>
+                            <doclint>none</doclint>
                         </configuration>
                     </plugin>
-                    <plugin><!--
+                    <plugin>
+                        <!--
                             For publishing in Maven Central, GPG key must be published to one of following servers:
                             - keyserver.ubuntu.com
                             - keys.openpgp.org
@@ -179,7 +435,7 @@
                         -->
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.1.0</version>
+                        <version>3.2.7</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -195,6 +451,17 @@
                                 </configuration>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.6.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <tokenAuth>true</tokenAuth>
+                            <autoPublish>true</autoPublish>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
