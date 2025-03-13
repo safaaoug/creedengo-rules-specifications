@@ -9,13 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deleted
+
+## [2.2.2] - 2025-03-13
+
+### Added
+
 - [#333](https://github.com/green-code-initiative/creedengo-rules-specifications/pull/333) Add JS variant of rule GCI505 - Idleness: Keep Screen On (addFlags)
 
 ### Changed
 
 - [#320](https://github.com/green-code-initiative/creedengo-rules-specifications/pull/320) Doc improvement : some method calls are legitimate in a for loop expression.
-
-### Deleted
 
 ## [2.2.1] - 2025-01-27
 
