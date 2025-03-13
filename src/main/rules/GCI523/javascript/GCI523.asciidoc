@@ -15,7 +15,7 @@ help minimize the strain on the device's CPU.
 
 [source,js]
 ----
-var options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }; // Non-compliant
+var options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }; // Noncompliant
 navigator.geolocation.getCurrentPosition(
   (pos) => console.log(pos),
   (err) => console.warn(err),
@@ -49,7 +49,7 @@ In this example, we ask the user to turn on high accuracy location mode which en
 ----
 import * as Location from 'expo-location';
 
-Location.enableNetworkProviderAsync(); // Non-compliant
+Location.enableNetworkProviderAsync(); // Noncompliant
 ----
 
 Prefer to ask the user to turn on lower-accuracy geolocation to conserve resources:

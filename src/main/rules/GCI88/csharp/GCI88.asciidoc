@@ -18,7 +18,7 @@ This rule shouldn't be ignored.
 ----
 public static async Task Test()
 {
-    using var stream = new MemoryStream(); // Non-compliant, can be disposed asynchronously
+    using var stream = new MemoryStream(); // Noncompliant, can be disposed asynchronously
 }
 ----
 

@@ -13,8 +13,8 @@ A missing src attribute can result in confusion and hinder accessibility.
 ----
 return (
   <>
-    <img src="" /> // Non-compliant
-    <img /> // Non-compliant
+    <img src="" /> // Noncompliant
+    <img /> // Noncompliant
   </>
 )
 ----
@@ -32,7 +32,7 @@ return (
 )
 ----
 
-This rule is build for https://react.dev/[React] and JSX.
+This rule is built for https://react.dev/[React] and JSX.
 
 == Resources
 

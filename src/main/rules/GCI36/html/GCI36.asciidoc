@@ -15,7 +15,7 @@ Video:
 
 [source,html,data-diff-id="1",data-diff-type="noncompliant"]
 ----
-<video src="videofile.webm" autoplay></video> // Non-compliant
+<video src="videofile.webm" autoplay></video> // Noncompliant
 ----
 
 [source,html,data-diff-id="1",data-diff-type="compliant"]
@@ -27,7 +27,7 @@ Audio:
 
 [source,html,data-diff-id="1",data-diff-type="noncompliant"]
 ----
-<audio controls src="audiofile.mp3" autoplay></audio> // Non-compliant
+<audio controls src="audiofile.mp3" autoplay></audio> // Noncompliant
 ----
 
 [source,html,data-diff-id="1",data-diff-type="compliant"]
@@ -39,7 +39,7 @@ Audio:
 
 === Documentation
 
-- https://github.com/cnumr/best-practices/blob/main/chapters/BP_4003_en.md[CNUMR best practices] - Avoid autoplay for videos and audio content
+- https://github.com/cnumr/best-practices/blob/main/chapters/BP_4003_en.md[CnumR best practices] - Avoid autoplay for videos and audio content
 
 === Articles & blog posts
 

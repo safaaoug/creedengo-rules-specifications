@@ -33,12 +33,12 @@ a|index.js - 24.42 KB
 [source,js,data-diff-id="2",data-diff-type="noncompliant"]
 ----
 // Example with lodash
-import lodash from "lodash"; // Non-compliant
-import { isEmpty } from "lodash"; // Non-compliant
-import * as lodash from "lodash"; // Non-compliant
+import lodash from "lodash"; // Noncompliant
+import { isEmpty } from "lodash"; // Noncompliant
+import * as lodash from "lodash"; // Noncompliant
 
 // Example with underscore
-import _ from "underscore"; // Non-compliant
+import _ from "underscore"; // Noncompliant
 ----
 
 [source,js,data-diff-id="2",data-diff-type="compliant"]

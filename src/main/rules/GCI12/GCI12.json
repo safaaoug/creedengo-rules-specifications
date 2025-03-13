@@ -1,9 +1,9 @@
 {
-  "title": "Disallow multiple style changes at once.",
+  "title": "Multiple style changes should be batched",
   "type": "CODE_SMELL",
   "code": {
     "impacts": {
-      "MAINTAINABILITY": "MEDIUM"
+      "RELIABILITY": "MEDIUM"
     },
     "attribute": "EFFICIENT"
   },

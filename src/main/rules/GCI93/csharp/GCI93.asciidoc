@@ -16,12 +16,12 @@ When this rule is applied, exception handling is deferred to the main caller ins
 ----
 public static async Task Test1()
 {
-	await Task.Delay(1000); // Non-compliant, return the Task directly.
+	await Task.Delay(1000); // Noncompliant, return the Task directly.
 }
 
 public static async Task Test2()
 {
-	await MyAsyncMethod(); // Non-compliant, exceptions within MyAsyncMethod are handled by the method itself.
+	await MyAsyncMethod(); // Noncompliant, exceptions within MyAsyncMethod are handled by the method itself.
 }
 ----
 

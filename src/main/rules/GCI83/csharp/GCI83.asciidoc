@@ -19,7 +19,7 @@ private enum Letter { A, B, C }
 
 public void Main()
 {
-    Console.WriteLine(Letter.A.ToString()); // Non-compliant, use nameof
+    Console.WriteLine(Letter.A.ToString()); // Noncompliant, use nameof
 }
 ----
 

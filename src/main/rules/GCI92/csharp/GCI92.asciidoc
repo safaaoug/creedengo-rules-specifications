@@ -17,7 +17,7 @@ This rule should not be ignored.
 public void Main()
 {
 	string s = "";
-	if (s == "") // Non-compliant
+	if (s == "") // Noncompliant
 	{
 		Console.WriteLine("Empty string");
 	}

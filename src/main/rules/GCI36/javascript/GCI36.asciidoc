@@ -17,9 +17,9 @@ Video:
 ----
 return (
   <>
-    <video src="video.mp4" autoplay/> // Non-compliant
-    <video src="video.mp4" preload="auto"/> // Non-compliant
-    <video src="video.mp4" autoplay preload="auto"/> // Non-compliant
+    <video src="video.mp4" autoplay/> // Noncompliant
+    <video src="video.mp4" preload="auto"/> // Noncompliant
+    <video src="video.mp4" autoplay preload="auto"/> // Noncompliant
   </>
 )
 ----
@@ -36,7 +36,7 @@ Audio:
 [source,typescriptjsx,data-diff-id="2",data-diff-type="noncompliant"]
 ----
 return (
-  <audio controls src="audiofile.mp3" autoplay></audio> // Non-compliant
+  <audio controls src="audiofile.mp3" autoplay></audio> // Noncompliant
 )
 ----
 
@@ -51,7 +51,7 @@ return (
 
 === Documentation
 
-- https://github.com/cnumr/best-practices/blob/main/chapters/BP_4003_en.md[CNUMR best practices] - Avoid autoplay for videos and audio content
+- https://github.com/cnumr/best-practices/blob/main/chapters/BP_4003_en.md[CnumR best practices] - Avoid autoplay for videos and audio content
 
 === Articles & blog posts
 

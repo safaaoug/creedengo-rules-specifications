@@ -1,9 +1,9 @@
 {
-  "title": "Disallow multiple access of same DOM element.",
+  "title": "Multiple access of same DOM element should be limited",
   "type": "CODE_SMELL",
   "code": {
     "impacts": {
-      "MAINTAINABILITY": "MEDIUM"
+      "RELIABILITY": "MEDIUM"
     },
     "attribute": "EFFICIENT"
   },

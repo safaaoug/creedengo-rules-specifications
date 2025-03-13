@@ -47,7 +47,7 @@ Adjust font sizes, hide unnecessary elements, or make any other modifications su
 
 === Documentation
 
-- https://github.com/cnumr/best-practices/blob/main/chapters/BP_027_en.md[CNUMR best practices] - Provide a print CSS
+- https://github.com/cnumr/best-practices/blob/main/chapters/BP_027_en.md[CnumR best practices] - Provide a print CSS
 
 === Articles & blog posts
 

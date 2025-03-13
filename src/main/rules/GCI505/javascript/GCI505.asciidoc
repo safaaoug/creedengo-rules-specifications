@@ -20,7 +20,7 @@ export default function KeepAwakeExample() {
 
 ```js
 _activate = () => {
-    activateKeepAwake(); // Non-compliant
+    activateKeepAwake(); // Noncompliant
     alert('Activated!');
   };
 ```

@@ -28,7 +28,7 @@ public class Test
         AsyncMethod(); // Cannot be awaited
     }
 
-    public async void AsyncMethod() // Non-compliant, use async Task
+    public async void AsyncMethod() // Noncompliant, use async Task
     {
         Console.WriteLine();
         await Task.Delay(1000);

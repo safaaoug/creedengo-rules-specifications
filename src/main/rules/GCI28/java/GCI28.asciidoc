@@ -8,9 +8,9 @@ public void readPreferences(String filename) {
     //...
     InputStream in = null;
     try {
-    in = new FileInputStream(filename);
+        in = new FileInputStream(filename);
     } catch (FileNotFoundException e) {
-    logger.log(e);
+        logger.log(e);
     }
     in.read(...);
     //...

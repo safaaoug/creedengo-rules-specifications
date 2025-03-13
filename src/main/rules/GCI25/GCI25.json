@@ -1,9 +1,9 @@
 {
-  "title": "Do not use an image with empty source attribute",
+  "title": "Images should not have an empty source attribute",
   "type": "CODE_SMELL",
   "code": {
     "impacts": {
-      "MAINTAINABILITY": "LOW"
+      "RELIABILITY": "LOW"
     },
     "attribute": "EFFICIENT"
   },

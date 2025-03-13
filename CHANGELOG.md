@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Correction of various typos in rules documentations
+
 ### Deleted
 
 ## [2.2.2] - 2025-03-13

@@ -20,8 +20,8 @@ In some cases however, typically if you know you have a lot of long-lived object
 ----
 public void Method();
 {
-    GC.Collect(); // Non-compliant, same as GC.Collect(generation: GC.MaxGeneration)
-    GC.Collect(generation: 2); // Non-compliant
+    GC.Collect(); // Noncompliant, same as GC.Collect(generation: GC.MaxGeneration)
+    GC.Collect(generation: 2); // Noncompliant
 }
 ----
 
