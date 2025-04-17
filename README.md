@@ -26,7 +26,7 @@ refer to the contribution section.
   - [Python plugin](https://github.com/green-code-initiative/creedengo-python)
   - [C# plugin](https://github.com/green-code-initiative/creedengo-csharp)
 - mobile plugins :
-  - [Android plugin](https://github.com/green-code-initiative/creedengo-android)
+  - [Android plugin](https://github.com/green-code-initiative/ecoCode-android)
   - [iOS plugin](https://github.com/green-code-initiative/creedengo-ios)
 
 ![Screenshot](docs/resources/screenshot.PNG)
