@@ -32,6 +32,7 @@ import static java.util.Optional.of;
         private final Path sourceDir;
         private final Path targetDir;
         private final Path indexFilepath;
+        private final String version;
 
         public static void main(String... args) {
             var sourceDir = Path.of(Objects.requireNonNull(System.getProperty("sourceDir"), "system property: sourceDir"));
@@ -44,18 +45,21 @@ import static java.util.Optional.of;
             new PrepareResources(
                     sourceDir,
                     targetDir,
-                    indexFilepath
+                    indexFilepath,
+                    System.getProperty("version")
             ).run();
         }
 
         PrepareResources(
                 Path sourceDir,
                 Path targetDir,
-                Path indexFilepath
+                Path indexFilepath,
+                String version
         ) {
             this.sourceDir = sourceDir;
             this.targetDir = targetDir;
             this.indexFilepath = indexFilepath;
+            this.version = version;
         }
 
         @Override
@@ -82,6 +86,9 @@ import static java.util.Optional.of;
             var rules = Json.createObjectBuilder();
             rulesMap.forEach(rules::add);
             var result = Json.createObjectBuilder();
+            if (version != null) {
+                result.add("version", version);
+            }
             result.add("rules", rules);
 
             try (var resultJsonWriter = Json.createWriter(Files.newBufferedWriter(indexFilepath))) {

@@ -243,6 +243,7 @@
                                 <option>-R "-DsourceDir=${project.build.directory}/rules-html"</option>
                                 <option>-R "-DtargetDir=${project.build.outputDirectory}/org/green-code-initiative/rules"</option>
                                 <option>-R "-DindexFile=${project.build.outputDirectory}/index.json"</option>
+                                <option>-R "-Dversion=${project.version}"</option>
                             </options>
                         </configuration>
                     </execution>
