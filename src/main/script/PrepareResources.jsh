@@ -70,7 +70,11 @@ import static java.util.Optional.of;
                 var rulesByLanguage = rulesMap.computeIfAbsent(rule.ruleKey, k -> Json.createObjectBuilder());
                 var resultMetadata = mergeOrCopyJsonMetadata(rule.metadata, rule.specificMetadata, rule.getMetadataTargetPath(targetDir));
 
+                var htmlDescriptionRelativePath = this.indexFilepath.getParent()
+                        .relativize(rule.getHtmlDescriptionTargetPath(targetDir))
+                        .toString();
                 var resultMetadataBuilder = Json.createObjectBuilder(resultMetadata);
+                resultMetadataBuilder.add("htmlDescription", htmlDescriptionRelativePath);
 
                 rulesByLanguage.add(rule.language, resultMetadataBuilder);
                 copyFile(rule.htmlDescription, rule.getHtmlDescriptionTargetPath(targetDir));
