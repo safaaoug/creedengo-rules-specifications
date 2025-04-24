@@ -4,6 +4,7 @@
 import jakarta.json.Json;
 import jakarta.json.JsonMergePatch;
 import jakarta.json.JsonObject;
+import jakarta.json.JsonObjectBuilder;
 import jakarta.json.JsonReader;
 import jakarta.json.JsonValue;
 import jakarta.json.JsonWriter;
@@ -15,6 +16,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -29,25 +31,64 @@ import static java.util.Optional.of;
 
         private final Path sourceDir;
         private final Path targetDir;
+        private final Path indexFilepath;
 
         public static void main(String... args) {
+            var sourceDir = Path.of(Objects.requireNonNull(System.getProperty("sourceDir"), "system property: sourceDir"));
+            var targetDir = Path.of(Objects.requireNonNull(System.getProperty("targetDir"), "system property: targetDir"));
+            var indexFilepath = Optional
+                    .ofNullable(System.getProperty("indexFile"))
+                    .map(Path::of)
+                    .orElse(targetDir.resolve("index.json"));
+
             new PrepareResources(
-                    Path.of(Objects.requireNonNull(System.getProperty("sourceDir"), "system property: sourceDir")),
-                    Path.of(Objects.requireNonNull(System.getProperty("targetDir"), "system property: targetDir"))
+                    sourceDir,
+                    targetDir,
+                    indexFilepath
             ).run();
         }
 
-        PrepareResources(Path sourceDir, Path targetDir) {
+        PrepareResources(
+                Path sourceDir,
+                Path targetDir,
+                Path indexFilepath
+        ) {
             this.sourceDir = sourceDir;
             this.targetDir = targetDir;
+            this.indexFilepath = indexFilepath;
         }
 
         @Override
         public void run() {
+            var rulesMap = new TreeMap<String, JsonObjectBuilder>();
+
             getResourcesToCopy().forEach(rule -> {
-                mergeOrCopyJsonMetadata(rule.metadata, rule.specificMetadata, rule.getMetadataTargetPath(targetDir));
+                var rulesByLanguage = rulesMap.computeIfAbsent(rule.ruleKey, k -> Json.createObjectBuilder());
+                var resultMetadata = mergeOrCopyJsonMetadata(rule.metadata, rule.specificMetadata, rule.getMetadataTargetPath(targetDir));
+
+                var resultMetadataBuilder = Json.createObjectBuilder(resultMetadata);
+
+                rulesByLanguage.add(rule.language, resultMetadataBuilder);
                 copyFile(rule.htmlDescription, rule.getHtmlDescriptionTargetPath(targetDir));
             });
+
+            writeIndexFile(rulesMap);
+        }
+
+        private void writeIndexFile(TreeMap<String, JsonObjectBuilder> rulesMap) {
+            if (indexFilepath == null) {
+                return;
+            }
+            var rules = Json.createObjectBuilder();
+            rulesMap.forEach(rules::add);
+            var result = Json.createObjectBuilder();
+            result.add("rules", rules);
+
+            try (var resultJsonWriter = Json.createWriter(Files.newBufferedWriter(indexFilepath))) {
+                resultJsonWriter.write(result.build());
+            } catch (IOException e) {
+                throw new RuntimeException("cannot write file: " + indexFilepath, e);
+            }
         }
 
         private List<Rule> getResourcesToCopy() {
@@ -63,20 +104,25 @@ import static java.util.Optional.of;
             }
         }
 
-        private void mergeOrCopyJsonMetadata(Path source, Path merge, Path target) {
+        private JsonObject mergeOrCopyJsonMetadata(Path source, Path merge, Path target) {
             try {
                 Files.createDirectories(target.getParent());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             if (Files.isRegularFile(merge)) {
-                mergeJsonFile(source, merge, target);
+                return mergeJsonFile(source, merge, target).asJsonObject();
             } else {
                 copyFile(source, target);
+                try (JsonReader targetJsonReader = Json.createReader(Files.newBufferedReader(target))) {
+                    return targetJsonReader.readObject();
+                } catch (IOException e) {
+                    throw new RuntimeException("cannot process source " + source, e);
+                }
             }
         }
 
-        private void mergeJsonFile(Path source, Path merge, Path target) {
+        private JsonValue mergeJsonFile(Path source, Path merge, Path target) {
             LOGGER.log(DEBUG, "Merge: {0} and {1} -> {2}", source, merge, target);
 
             try (
@@ -93,6 +139,7 @@ import static java.util.Optional.of;
                 JsonValue result = mergePatch.apply(sourceJson);
 
                 resultJsonWriter.write(result);
+                return result;
             } catch (IOException e) {
                 throw new RuntimeException("cannot process source " + source, e);
             }
@@ -128,6 +175,7 @@ import static java.util.Optional.of;
                 }
 
                 return of(new Rule(
+                        ruleKey,
                         matcher.group("language"),
                         htmlDescription,
                         metadata,
@@ -135,12 +183,20 @@ import static java.util.Optional.of;
                 ));
             }
 
+            private final String ruleKey;
             private final String language;
             private final Path htmlDescription;
             private final Path metadata;
             private final Path specificMetadata;
 
-            Rule(String language, Path htmlDescription, Path metadata, Path specificMetadata) {
+            Rule(
+                    String ruleKey,
+                    String language,
+                    Path htmlDescription,
+                    Path metadata,
+                    Path specificMetadata
+            ) {
+                this.ruleKey = ruleKey;
                 this.language = language;
                 this.htmlDescription = htmlDescription;
                 this.metadata = metadata;
