@@ -84,6 +84,9 @@ import static java.util.Optional.of;
                         .relativize(rule.getHtmlDescriptionTargetPath(targetDir))
                         .toString();
                 var resultMetadataBuilder = Json.createObjectBuilder(resultMetadata);
+                resultMetadataBuilder.add("key", rule.ruleKey);
+                resultMetadataBuilder.add("language", rule.language);
+                resultMetadataBuilder.add("severity", resultMetadata.getString("defaultSeverity").toUpperCase(Locale.ENGLISH));
                 resultMetadataBuilder.add("htmlDescription", htmlDescriptionRelativePath);
                 resultMetadataBuilder.add("terms", extractTermsFromHtmlFile(rule.htmlDescription));
 
