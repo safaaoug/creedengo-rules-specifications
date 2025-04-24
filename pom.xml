@@ -227,6 +227,11 @@
                         <version>2.0.1</version>
                         <classifier>module</classifier>
                     </dependency>
+                    <dependency>
+                        <groupId>org.jsoup</groupId>
+                        <artifactId>jsoup</artifactId>
+                        <version>1.19.1</version>
+                    </dependency>
                 </dependencies>
                 <executions>
                     <execution>

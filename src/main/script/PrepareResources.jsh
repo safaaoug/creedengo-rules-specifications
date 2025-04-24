@@ -8,12 +8,15 @@ import jakarta.json.JsonObjectBuilder;
 import jakarta.json.JsonReader;
 import jakarta.json.JsonValue;
 import jakarta.json.JsonWriter;
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.text.Normalizer;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.TreeMap;
@@ -33,6 +36,7 @@ import static java.util.Optional.of;
         private final Path targetDir;
         private final Path indexFilepath;
         private final String version;
+        private final int minTermLength;
 
         public static void main(String... args) {
             var sourceDir = Path.of(Objects.requireNonNull(System.getProperty("sourceDir"), "system property: sourceDir"));
@@ -46,7 +50,11 @@ import static java.util.Optional.of;
                     sourceDir,
                     targetDir,
                     indexFilepath,
-                    System.getProperty("version")
+                    System.getProperty("version"),
+                    Optional
+                            .ofNullable(System.getProperty("minTermLength"))
+                            .map(Integer::parseInt)
+                            .orElse(4)
             ).run();
         }
 
@@ -54,12 +62,14 @@ import static java.util.Optional.of;
                 Path sourceDir,
                 Path targetDir,
                 Path indexFilepath,
-                String version
+                String version,
+                int minTermLength
         ) {
             this.sourceDir = sourceDir;
             this.targetDir = targetDir;
             this.indexFilepath = indexFilepath;
             this.version = version;
+            this.minTermLength = minTermLength;
         }
 
         @Override
@@ -75,12 +85,38 @@ import static java.util.Optional.of;
                         .toString();
                 var resultMetadataBuilder = Json.createObjectBuilder(resultMetadata);
                 resultMetadataBuilder.add("htmlDescription", htmlDescriptionRelativePath);
+                resultMetadataBuilder.add("terms", extractTermsFromHtmlFile(rule.htmlDescription));
 
                 rulesByLanguage.add(rule.language, resultMetadataBuilder);
                 copyFile(rule.htmlDescription, rule.getHtmlDescriptionTargetPath(targetDir));
             });
 
             writeIndexFile(rulesMap);
+        }
+
+        private String extractTermsFromHtmlFile(Path htmlFile) {
+            try {
+                var textContent = Jsoup.parse(htmlFile).select("body").text();
+                return Stream
+                        .of(
+                                removeDiacritics(textContent)
+                                        .toLowerCase(Locale.ENGLISH)
+                                        .replaceAll("[^a-zA-Z0-9]", " ")
+                                        .trim()
+                                        .split("[\\s\\n\\r]+")
+                        )
+                        .filter(term -> term.length() >= minTermLength)
+                        .distinct()
+                        .sorted()
+                        .collect(Collectors.joining(" "));
+            } catch (IOException e) {
+                throw new RuntimeException("Unable to parse HTML file: " + htmlFile, e);
+            }
+        }
+
+        private String removeDiacritics(String text) {
+            Normalizer.normalize(text, Normalizer.Form.NFKD);
+            return text.replaceAll("[^\\p{ASCII}]", "").replaceAll("\\p{M}", "");
         }
 
         private void writeIndexFile(TreeMap<String, JsonObjectBuilder> rulesMap) {
