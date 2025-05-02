@@ -1,0 +1,171 @@
+openapi: 3.1.0
+info:
+  title: Creedengo Rules Specifications
+  description: Repository that contains the specifications of every static-analysis rules available in creedengo plugins.
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  '/creedengo-rules-specifications/data/':
+    get:
+      summary: Get paths of available metadata versions
+      description: Get paths of available metadata versions
+      operationId: getVersions
+      responses:
+        '200':
+          description: A list of metadata versions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataVersionResponse'
+  '/creedengo-rules-specifications/data/{version}/':
+    get:
+      summary: Get rules for a specific version
+      description: Get rules for a specific version
+      operationId: getRules
+      parameters:
+        - name: version
+          in: path
+          required: true
+          description: The version of the rules specifications to retrieve.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of rules for the specified version
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RulesResponse'
+
+components:
+  schemas:
+    RuleRemediation:
+      type: object
+      properties:
+        func:
+          type: string
+          description: The remediation function type.
+        constantCost:
+          type: string
+          description: The constant cost of remediation.
+
+    RuleDetails:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the rule.
+        type:
+          type: string
+          description: The type of the rule (e.g., CODE_SMELL).
+          enum:
+            - CODE_SMELL
+            - BUG
+            - VULNERABILITY
+            - SECURITY_HOTSPOT
+        status:
+          type: string
+          description: The status of the rule.
+          enum:
+            - draft
+            - ready
+            - deprecated
+        remediation:
+          $ref: '#/components/schemas/RuleRemediation'
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags associated with the rule.
+        defaultSeverity:
+          type: string
+          description: The default severity of the rule.
+          enum:
+            - Blocker
+            - Critical
+            - Info
+            - Major
+            - Minor
+        key:
+          type: string
+          description: The unique key of the rule.
+        language:
+          type: string
+          description: The programming language of the rule.
+        severity:
+          type: string
+          description: The severity level of the rule.
+        htmlDescription:
+          type: string
+          description: The path to the HTML description of the rule.
+        terms:
+          type: string
+          description: Terms associated with the rule.
+
+    Rules:
+      type: object
+      additionalProperties:
+        type: object
+        additionalProperties:
+          $ref: '#/components/schemas/RuleDetails'
+
+    Specification:
+      type: object
+      properties:
+        scmRevisionNumber:
+          type: string
+          description: The SCM revision number.
+        version:
+          type: string
+          description: The version of the specification.
+        title:
+          type: string
+          description: The title of the repository.
+        scmRevisionDate:
+          type: string
+          format: date-time
+          description: The date of the SCM revision.
+
+    RulesResponse:
+      type: object
+      properties:
+        specification:
+          $ref: '#/components/schemas/Specification'
+        rules:
+          $ref: '#/components/schemas/Rules'
+
+    MetadataVersionResponse:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          title:
+            type: string
+            description: The title of the repository.
+          version:
+            type: string
+            description: The version of the metadata.
+          scmRevisionDate:
+            type: string
+            format: date-time
+            description: The date of the SCM revision.
+          scmRevisionNumber:
+            type: string
+            description: The SCM revision number.
+      example:
+        {
+          "main": {
+            "path": "creedengo-rules-specifications/data/main/",
+            "title": "creedengo Rules Specifications repository",
+            "version": "main-SNAPSHOT",
+            "scmRevisionDate": "2025-05-03T21:15:47Z",
+            "scmRevisionNumber": "27ccf00b931fe2bbe7202af72f9edd60bdf0654d"
+          },
+          "2.0.1": {
+            "title": "creedengo Rules Specifications repository",
+            "version": "2.0.1",
+            "scmRevisionDate": "2025-02-01T12:05:07Z",
+            "scmRevisionNumber": "27ccf00b93af72f9edd60bdf0654d1fe2bbe7202"
+          }
+        }
