@@ -7,7 +7,6 @@
 
 # Ignore generated files
 target
-lib
 bin
 dependency-reduced-pom.xml
 
