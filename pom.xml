@@ -276,7 +276,10 @@
                                 <option>-R "-DsourceDir=${project.build.directory}/rules-html"</option>
                                 <option>-R "-DtargetDir=${project.build.outputDirectory}/org/green-code-initiative/rules"</option>
                                 <option>-R "-DindexFile=${project.build.outputDirectory}/index.json"</option>
-                                <option>-R "-Dversion=${project.version}"</option>
+                                <option>-R "-DspecificationTitle=${project.name}"</option>
+                                <option>-R "-DspecificationVersion=${project.version}"</option>
+                                <option>-R "-DspecificationSCMRevisionNumber=${git.commit}"</option>
+                                <option>-R "-DspecificationSCMRevisionDate=${git.commit.timestamp.datetime}"</option>
                             </options>
                         </configuration>
                     </execution>
