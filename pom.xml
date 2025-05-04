@@ -378,6 +378,33 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-invoker-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>run-rule-exporter</id>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <pom>tools/rule-exporter/pom.xml</pom>
+                            <streamLogs>true</streamLogs>
+                            <noLog>true</noLog>
+                            <goals>
+                                <goal>clean</goal>
+                                <goal>compile</goal>
+                                <goal>test</goal>
+                                <goal>exec:java</goal>
+                            </goals>
+                            <properties>
+                                <artifact-file>${project.build.directory}/${project.build.finalName}.jar</artifact-file>
+                            </properties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.green-code-initiative</groupId>
-    <artifactId>rule-exporter</artifactId>
+    <artifactId>creedengo-rules-exporter</artifactId>
     <version>${revision}</version>
 
-    <name>creedengo Rules Specifications Exporter</name>
+    <name>Creedengo Rules Specifications Exporter</name>
     <description>Export all rules to JSON files usable by the website</description>
     <url>https://github.com/green-code-initiative/creedengo-rules-specifications/tree/main/tools/rule-exporter</url>
     <inceptionYear>2024</inceptionYear>
@@ -16,9 +16,8 @@
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.deploy.skip>true</maven.deploy.skip>
-        <maven.install.skip>true</maven.install.skip>
 
+        <version.maven-execute>3.5.0</version.maven-execute>
         <version.jakarta-json-api>2.1.3</version.jakarta-json-api>
         <version.jakarta-json>2.0.1</version.jakarta-json>
         <version.junit>5.10.1</version.junit>
@@ -57,44 +56,17 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${version.maven-execute}</version>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>org.greencodeinitiative.tools.exporter.RuleExporter</mainClass>
-                        </manifest>
-                    </archive>
+                    <mainClass>org.greencodeinitiative.tools.exporter.Exporter</mainClass>
+                    <arguments>
+                        <!-- this property comes from parent pom.xml -->
+                        <argument>${artifact-file}</argument>
+                        <argument>${project.build.directory}/json-file/rules.json</argument>
+                    </arguments>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.5.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <shadedArtifactAttached>false</shadedArtifactAttached>
-                            <minimizeJar>true</minimizeJar>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
             </plugin>
         </plugins>
     </build>

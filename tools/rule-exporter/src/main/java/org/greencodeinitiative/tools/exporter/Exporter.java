@@ -22,17 +22,26 @@ import org.greencodeinitiative.tools.exporter.infra.RuleWriter;
 
 import java.io.IOException;
 
-public class RuleExporter {
+public class Exporter {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         if (args.length != 2) {
-            System.out.println("Usage: java -jar rule-exporter.jar <input jar> <output json>");
+            System.err.println("Usage: java -jar rule-exporter.jar <resourceArtifactFile> <outputJsonFile>");
             System.exit(1);
         }
 
-        RuleReader reader = new RuleReader(args[0]);
-        RuleWriter writer = new RuleWriter(args[1]);
-        writer.writeRules(reader.readRules());
+        String resourceArtifactFile = args[0];
+        String outputJsonFile = args[1];
+
+        RuleReader reader = new RuleReader(resourceArtifactFile);
+        RuleWriter writer = new RuleWriter(outputJsonFile);
+        try {
+            writer.writeRules(reader.readRules());
+            System.out.println("Rules exported successfully to " + outputJsonFile);
+        } catch (IOException e) {
+            System.err.println("Cannot read or write rules: " + e.getMessage());
+            System.exit(1);
+        }
     }
 
 }
