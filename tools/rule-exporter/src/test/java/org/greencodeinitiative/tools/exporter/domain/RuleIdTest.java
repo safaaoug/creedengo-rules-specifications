@@ -27,10 +27,10 @@ public class RuleIdTest {
     @Test
     void valid() {
         RuleId rule1 = new RuleId("GCI1");
-        RuleId rule956 = new RuleId("GCI956");
+        RuleId rule956 = new RuleId("GCI957");
 
         assertThat(rule1.toString()).isEqualTo("GCI1");
-        assertThat(rule956.toString()).isEqualTo("GCI956");
+        assertThat(rule956.toString()).isEqualTo("GCI957");
     }
 
     @Test
@@ -53,12 +53,14 @@ public class RuleIdTest {
     @Test
     void equals() {
         RuleId rule1 = new RuleId("GCI1");
+        assertThat(rule1).isEqualTo(rule1);
         assertThat(rule1).isEqualTo(new RuleId("GCI1"));
+        assertThat(rule1).isNotEqualTo(null);
         assertThat(rule1).isNotEqualTo(new RuleId("GCI956"));
     }
 
     @Test
-    void _hashCode() {
+    void computeHashCode() {
         assertThat(new RuleId("GCI1").hashCode()).isEqualTo(new RuleId("GCI1").hashCode());
     }
 

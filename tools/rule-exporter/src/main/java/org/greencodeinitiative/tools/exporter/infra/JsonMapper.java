@@ -17,10 +17,10 @@
  */
 package org.greencodeinitiative.tools.exporter.infra;
 
+import jakarta.json.JsonObject;
 import org.greencodeinitiative.tools.exporter.domain.RuleMetadata;
 import org.greencodeinitiative.tools.exporter.domain.RuleSeverity;
 import org.greencodeinitiative.tools.exporter.domain.RuleStatus;
-import jakarta.json.JsonObject;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +29,10 @@ public class JsonMapper {
 
     private static final Pattern FILE_PATTERN = Pattern
             .compile("^org/green-code-initiative/rules/(.*?)/(.*?)\\.json$");
+
+    private JsonMapper() {
+        // not instantiable
+    }
 
     public static RuleMetadata toRuleMetadata(String filePath, JsonObject object) {
         Matcher fileMatcher = FILE_PATTERN.matcher(filePath);

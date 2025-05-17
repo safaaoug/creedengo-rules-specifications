@@ -21,13 +21,16 @@ import org.greencodeinitiative.tools.exporter.infra.RuleReader;
 import org.greencodeinitiative.tools.exporter.infra.RuleWriter;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Exporter {
 
+    private static final Logger LOGGER = Logger.getLogger(Exporter.class.getName());
+
     public static void main(String[] args) {
         if (args.length != 2) {
-            System.err.println("Usage: java -jar rule-exporter.jar <resourceArtifactFile> <outputJsonFile>");
-            System.exit(1);
+            throw new IllegalArgumentException("Usage: java -jar rule-exporter.jar <resourceArtifactFile> <outputJsonFile>");
         }
 
         String resourceArtifactFile = args[0];
@@ -37,10 +40,9 @@ public class Exporter {
         RuleWriter writer = new RuleWriter(outputJsonFile);
         try {
             writer.writeRules(reader.readRules());
-            System.out.println("Rules exported successfully to " + outputJsonFile);
+            LOGGER.log(Level.INFO, "Rules exported successfully to {0}", outputJsonFile);
         } catch (IOException e) {
-            System.err.println("Cannot read or write rules: " + e.getMessage());
-            System.exit(1);
+            throw new IllegalStateException("Cannot read or write rules", e);
         }
     }
 
