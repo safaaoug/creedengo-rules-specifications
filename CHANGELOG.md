@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [2.2.3] - 2025-05-20
+
+### Added
+
+- []() Add JS variant of rule GCI3 - Avoid getting size collection in loops
+
 ## [2.2.2] - 2025-03-13
 
 ### Added
