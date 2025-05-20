@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-### Changed
+- [#403](https://github.com/green-code-initiative/creedengo-rules-specifications/pull/403) Add JS variant of rule GCI3 - Avoid getting size collection in loops
 
 - Correction of various typos in rules documentations
+
+### Changed
 
 ### Deleted
 
